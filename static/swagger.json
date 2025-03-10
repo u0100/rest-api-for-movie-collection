@@ -1,0 +1,167 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Movies API",
+    "version": "1.0.0",
+    "description": "API для управления коллекцией фильмов"
+  },
+  "paths": {
+    "/movies": {
+      "get": {
+        "summary": "Получить список всех фильмов",
+        "responses": {
+          "200": {
+            "description": "Список фильмов",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Movie"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Добавить новый фильм",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Movie"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Фильм успешно добавлен"
+          },
+          "400": {
+            "description": "Некорректные данные"
+          }
+        }
+      }
+    },
+    "/movies/{id}": {
+      "get": {
+        "summary": "Получить фильм по ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Информация о фильме",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Movie"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Фильм не найден"
+          }
+        }
+      },
+      "put": {
+        "summary": "Обновить информацию о фильме",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Movie"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Информация о фильме обновлена"
+          },
+          "400": {
+            "description": "Некорректные данные"
+          },
+          "404": {
+            "description": "Фильм не найден"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Удалить фильм",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Фильм успешно удален"
+          },
+          "404": {
+            "description": "Фильм не найден"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Movie": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Уникальный идентификатор фильма"
+          },
+          "title": {
+            "type": "string",
+            "description": "Название фильма"
+          },
+          "year": {
+            "type": "integer",
+            "description": "Год выпуска фильма"
+          },
+          "director": {
+            "type": "string",
+            "description": "Режиссер фильма"
+          },
+          "rating": {
+            "type": "number",
+            "format": "float",
+            "description": "Рейтинг фильма"
+          }
+        },
+        "required": ["title", "year", "director", "rating"]
+      }
+    }
+  }
+}
