@@ -11,7 +11,7 @@ load_dotenv()
 app = Flask(__name__)
 
 # Настройка CORS
-CORS(app, resources={r"/api/*": {"origins": "https://vadim-s-portfolio.vercel.app"}})  # Разрешаем доступ только с указанного домена
+CORS(app, resources={r"/(.*)": {"origins": "https://vadim-s-portfolio.vercel.app"}})  # Разрешаем доступ только с указанного домена
 
 # Настройка Supabase
 SUPABASE_URL = os.getenv("SUPABASE_URL")
