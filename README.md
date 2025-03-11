@@ -1,5 +1,5 @@
 ## RU
-# Flask API для работы с базой фильмов
+# Flask API для работы с базой данных фильмов
 ![Screenshot 2025-03-11 211838](https://github.com/user-attachments/assets/fc88d353-c278-473e-80c7-0ad9913c127e)
 
 ## Описание
