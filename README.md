@@ -15,7 +15,7 @@
 
 ### 1. Клонирование репозитория
 ```sh
-git clone https://github.com/your-repo.git
+git clone https://github.com/u0100/rest-api-for-movie-collection.git
 cd your-repo
 ```
 
@@ -105,7 +105,7 @@ This project is a Flask-based backend connected to a Supabase database. The API 
 
 ### 1. Clone the Repository
 ```sh
-git clone https://github.com/your-repo.git
+git clone https://github.com/u0100/rest-api-for-movie-collection.git
 cd your-repo
 ```
 
