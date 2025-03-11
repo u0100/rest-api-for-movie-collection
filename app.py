@@ -1,4 +1,5 @@
 from flask import Flask, jsonify, request
+from flask_cors import CORS  # Импортируем flask_cors
 from supabase import create_client, Client
 import os
 from dotenv import load_dotenv
@@ -8,6 +9,9 @@ load_dotenv()
 
 # Инициализация приложения Flask
 app = Flask(__name__)
+
+# Настройка CORS
+CORS(app, resources={r"/api/*": {"origins": "https://vadim-s-portfolio.vercel.app"}})  # Разрешаем доступ только с указанного домена
 
 # Настройка Supabase
 SUPABASE_URL = os.getenv("SUPABASE_URL")
